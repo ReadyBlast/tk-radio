@@ -1,0 +1,208 @@
+@import 'libs/normalize';
+@import 'variables';
+
+body {
+  box-sizing: border-box;
+}
+
+.content {
+  margin: 20px;
+}
+
+.bg_img {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+  background-color: #464646;
+  height: 100vh;
+  backdrop-filter: blur(70px);
+  -webkit-backdrop-filter: blur(70px);
+}
+
+.wrapper {
+  position: relative;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  max-width: 326px;
+  background: linear-gradient(
+    180deg,
+    rgba(75, 75, 75, 0.6) 0%,
+    rgba(170, 170, 170, 0.6) 100%,
+    rgba(75, 75, 75, 0.6) 100%
+  );
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 20px;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+
+  width: calc(326px - 40px);
+  max-height: 100vh;
+  height: 100%;
+}
+
+.album_cover {
+  width: 100%;
+  height: 245px;
+
+  border-radius: 20px;
+}
+
+.now_played {
+  display: flex;
+  flex-direction: row;
+  margin-top: 30px;
+  align-items: center;
+  width: 246px;
+
+  &__button {
+    margin-right: 18px;
+
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 20px;
+
+    border-color: transparent transparent transparent #ffffff;
+    transition: 100ms all ease;
+    cursor: pointer;
+
+    // play state
+    border-style: solid;
+    border-width: 12px 0 12px 18px;
+
+    &.paused {
+      border-style: double;
+      border-width: 0px 0 0px 18px;
+    }
+
+    &:hover {
+      border-color: transparent transparent transparent #d0d0d0;
+      transform: scale(1.2);
+      transition: transform 0.1s ease-in-out;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 7px;
+    overflow: hidden;
+  }
+
+  &__artist {
+    // font-style: normal;
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+
+.slider {
+  margin: 30px 0;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 2px; /* Specified height */
+  background: #ffffff; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 20px;
+    width: 15px;
+    height: 15px; /* Slider handle height */
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  &::-moz-range-thumb {
+    border-radius: 20px;
+    width: 13px;
+    height: 13px; /* Slider handle height */
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+}
+
+.prev_track {
+  &__info {
+    font-style: normal;
+    font-size: 10px;
+    overflow: hidden;
+
+    letter-spacing: 0.035em;
+  }
+
+  &__songname {
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    overflow: hidden;
+  }
+}
+
+.station {
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    font-weight: 700;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  &__svg {
+    &:hover {
+    cursor: pointer;
+
+    transform: scale(1.2);
+    transition: transform 0.1s ease-in-out;
+  }
+  }
+}
+
+.link_buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.steam-link:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.vk-link:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
+
+.discord-link:hover {
+  -webkit-transform: scale(1.2);
+  -ms-transform: scale(1.2);
+  transform: scale(1.2);
+}
