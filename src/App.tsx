@@ -4,7 +4,13 @@ import './scss/app.scss';
 
 function App() {
   return (
-    <div className="bg_img" style={{ backgroundColor: 'black' }}>
+    <div
+      className="bg_img"
+      style={{
+        background:
+          'linear-gradient(359.73deg, #363636 -28.45%, #000000 114.94%)',
+      }}
+    >
       <div className="content">
         <Player />
         <div className="link_buttons">
