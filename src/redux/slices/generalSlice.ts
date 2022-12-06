@@ -7,7 +7,7 @@ interface IGeneralSlice {
 
 const initialState: IGeneralSlice = {
   volumeValue: '20',
-  playerStatus: 'playlist'
+  playerStatus: 'radio'
 };
 
 const generalSlice = createSlice({
