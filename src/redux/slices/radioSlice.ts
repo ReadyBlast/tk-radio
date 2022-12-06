@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import axios from 'axios';
-import { TRadiostationInfo } from '../../components/Player';
+import { TRadiostationInfo } from '../../components/RadioPlayer/RadioPlayer';
 
 enum eStatus {
   LOADING = 'loading',
@@ -13,14 +13,13 @@ type TInitialState = {
   albumCover: string;
   songnamesUrl: string;
   songnames: string[];
-  src: string;
-  volumeValue: string;
   popupValue: boolean;
+  src: string;
   status: eStatus;
 };
 
 export const fetchSongnames = createAsyncThunk(
-  'users/fetchSongnameStatus',
+  'radio/fetchSongnameStatus',
   async (arg: string) => {
     const { data } = await axios.get<string>(arg);
     return data;
@@ -33,8 +32,8 @@ const initialState: TInitialState = {
   albumCover: 'https://radio.tkofficial.ru/image/logo.jpg?',
   songnamesUrl: 'https://radio.tkofficial.ru/library/nowplaying_title.txt',
   songnames: [],
-  volumeValue: '20',
   popupValue: false,
+
   status: eStatus.LOADING,
 };
 
@@ -42,9 +41,6 @@ const radioSlice = createSlice({
   name: 'radio',
   initialState,
   reducers: {
-    setVolumeValue(state, action: PayloadAction<string>) {
-      state.volumeValue = action.payload;
-    },
     setStation(state, action: PayloadAction<TRadiostationInfo>) {
       state.radiostation = action.payload.stationName;
       state.src = action.payload.stationSrc;
@@ -63,7 +59,7 @@ const radioSlice = createSlice({
       state.status = eStatus.LOADING;
     });
 
-    builder.addCase(fetchSongnames.fulfilled, (state, action) => {
+    builder.addCase(fetchSongnames.fulfilled, (state, action: PayloadAction<string>) => {
       state.status = eStatus.SUCCESS;
       state.songnames = action.payload?.split('\n', 2);
     });
@@ -75,7 +71,6 @@ const radioSlice = createSlice({
   },
 });
 
-export const { setVolumeValue, setStation, setAlbumCover, setPopupVisible } =
-  radioSlice.actions;
+export const { setStation, setAlbumCover, setPopupVisible } = radioSlice.actions;
 
 export default radioSlice.reducer;

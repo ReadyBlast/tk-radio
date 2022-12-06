@@ -1,13 +1,15 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import Marquee from 'react-fast-marquee';
-import { useAppDispatch, useAppSelector } from '../redux/hooks';
+import { useAppDispatch, useAppSelector } from '../../redux/hooks';
 import {
   fetchSongnames,
   setAlbumCover,
   setStation,
-  setVolumeValue,
-} from '../redux/slices/radioSlice';
+} from '../../redux/slices/radioSlice';
 import StationsPopup from './StationsPopup/StationsPopup';
+
+import './radioPlayer.scss';
+import { setVolumeValue } from '../../redux/slices/generalSlice';
 
 export type TRadiostationInfo = {
   stationName: string;
@@ -36,22 +38,18 @@ const radiostations: IRadiostations = {
   },
 };
 
-const Player: React.FC = () => {
+type TRadioProps = {
+  audio: HTMLAudioElement;
+};
+
+const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
   const dispatch = useAppDispatch();
-  const {
-    src,
-    songnamesUrl,
-    songnames,
-    volumeValue,
-    albumCover,
-    radiostation,
-    popupValue,
-  } = useAppSelector((state) => state.radio);
+  const { src, songnamesUrl, songnames, albumCover, radiostation, popupValue } =
+    useAppSelector((state) => state.radio);
+  const { volumeValue } = useAppSelector((state) => state.general);
 
-  console.log(albumCover);
-
-  const audio = useMemo(() => new Audio(src), [src]);
-  const [isPlayed, setIsPlayed] = useState(false);
+  // const audio = useMemo(() => new Audio(src), [src]);
+  const [isRadioPlayed, setIsRadioPlayed] = useState(false);
 
   const getStationInfo = useCallback(() => {
     dispatch(
@@ -79,14 +77,14 @@ const Player: React.FC = () => {
     };
   }, [getStationInfo]);
 
-  const playingHandler = () => {
-    if (isPlayed) {
+  const playingRadioHandler = () => {
+    if (isRadioPlayed) {
       audio.pause();
-      setIsPlayed(false);
+      setIsRadioPlayed(false);
     } else {
       audio.src = src;
       audio.play();
-      setIsPlayed(true);
+      setIsRadioPlayed(true);
     }
   };
 
@@ -98,10 +96,14 @@ const Player: React.FC = () => {
   const onClickHandler = (obj: TRadiostationInfo) => {
     if (obj.stationName !== radiostation) {
       audio.pause();
-      setIsPlayed(false);
+      setIsRadioPlayed(false);
 
       dispatch(setStation(obj));
     }
+  };
+
+  const inputBgChanger = (val: number, max: number) => {
+    return ((val - 0) * 100) / (max - 0) + '% 100%';
   };
 
   return (
@@ -110,9 +112,9 @@ const Player: React.FC = () => {
         <img className="album_cover" src={albumCover} alt="album_cover" />
         <div className="now_played">
           <button
-            onClick={playingHandler}
+            onClick={playingRadioHandler}
             className={
-              isPlayed === false
+              isRadioPlayed === false
                 ? 'now_played__button'
                 : 'now_played__button paused'
             }
@@ -131,7 +133,16 @@ const Player: React.FC = () => {
           </div>
         </div>
         <input
-          style={popupValue ? { opacity: '0' } : {}}
+          style={
+            popupValue
+              ? {
+                  opacity: '0',
+                  backgroundSize: `${inputBgChanger(Number(volumeValue), 100)}`,
+                }
+              : {
+                  backgroundSize: `${inputBgChanger(Number(volumeValue), 100)}`,
+                }
+          }
           value={volumeValue}
           type="range"
           min="0"
@@ -156,4 +167,4 @@ const Player: React.FC = () => {
   );
 };
 
-export default Player;
+export default RadioPlayer;

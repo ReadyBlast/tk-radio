@@ -1,8 +1,31 @@
-import React from 'react';
-import Player from './components/Player';
+import React, { useMemo } from 'react';
+import PlaylistPlayer from './components/PlaylistPlayer/PlaylistPlayer';
+import RadioPlayer from './components/RadioPlayer/RadioPlayer';
+import { useAppDispatch, useAppSelector } from './redux/hooks';
+import { setPlayerStatus } from './redux/slices/generalSlice';
+import { setShuffleStatus } from './redux/slices/playerSlice';
 import './scss/app.scss';
 
 function App() {
+  const audio = useMemo(() => new Audio(), []);
+
+  const dispatch = useAppDispatch();
+  const playerStatus = useAppSelector((state) => state.general.playerStatus);
+  const radioSrc = useAppSelector((state) => state.radio.src);
+  const currentSong = useAppSelector((state) => state.player.currentSong);
+
+  const changeStatusHandler = (param: string) => {
+    audio.pause()
+    if (param === 'radio') {
+      dispatch(setPlayerStatus('radio'));
+      audio.src = radioSrc;
+    } else if (param === 'playlist') {
+      dispatch(setPlayerStatus('playlist'));
+      dispatch(setShuffleStatus('off'))
+      audio.src = currentSong.url;
+    }
+  };
+
   return (
     <div
       className="bg_img"
@@ -12,7 +35,24 @@ function App() {
       }}
     >
       <div className="content">
-        <Player />
+        <div className="player-switcher">
+          <button
+            className={playerStatus === 'radio' ? 'radio' : 'radio disabled'}
+            onClick={() => changeStatusHandler('radio')}
+          >
+            Radio
+          </button>
+          <button
+            className={
+              playerStatus === 'playlist' ? 'player' : 'player disabled'
+            }
+            onClick={() => changeStatusHandler('playlist')}
+          >
+            Playlist
+          </button>
+        </div>
+        {playerStatus === 'playlist' && <PlaylistPlayer audio={audio} />}
+        {playerStatus === 'radio' && <RadioPlayer audio={audio} />}
         <div className="link_buttons">
           <a
             href="https://steamcommunity.com/groups/TotalenKrieginc"

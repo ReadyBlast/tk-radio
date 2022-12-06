@@ -1,7 +1,7 @@
 import React from 'react';
-import { useAppDispatch, useAppSelector } from '../../redux/hooks';
-import { setPopupVisible } from '../../redux/slices/radioSlice';
-import { IRadiostations, TRadiostationInfo } from '../Player';
+import { useAppDispatch, useAppSelector } from '../../../redux/hooks';
+import { setPopupVisible } from '../../../redux/slices/radioSlice';
+import { IRadiostations, TRadiostationInfo } from '../RadioPlayer';
 import styles from './StationPopup.module.scss';
 
 interface IStationsPopuoProps {
@@ -23,7 +23,7 @@ const StationsPopup: React.FC<IStationsPopuoProps> = ({
 
   return (
     <div>
-      <div className="station" style={popupValue ? {opacity: '0'}: {}}>
+      <div className="station" style={popupValue ? { opacity: '0' } : {}}>
         <button
           className="station__svg"
           onClick={() => dispatch(setPopupVisible(true))}

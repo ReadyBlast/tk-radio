@@ -1,0 +1,236 @@
+.album_cover_player {
+  width: 100%;
+  height: 245px;
+
+  border-radius: 20px;
+}
+
+.now_played_player {
+  margin-top: 30px;
+  width: 246px;
+  z-index: -1;
+
+  &__button {
+    margin-right: 18px;
+
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 20px;
+
+    border-color: transparent transparent transparent #ffffff;
+    transition: 100ms all ease;
+    cursor: pointer;
+
+    // play state
+    border-style: solid;
+    border-width: 12px 0 12px 18px;
+
+    &.paused {
+      border-style: double;
+      border-width: 0px 0 0px 18px;
+    }
+
+    &:hover {
+      border-color: transparent transparent transparent #d0d0d0;
+      transform: scale(1.2);
+      transition: transform 0.1s ease-in-out;
+    }
+  }
+
+  &__title {
+    font-weight: 600;
+    font-size: 22px;
+    margin-bottom: 7px;
+    overflow: hidden;
+  }
+
+  &__artist {
+    // font-style: normal;
+    overflow: hidden;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+
+.play-slider {
+  margin: 30px 0 5px;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 5px; /* Specified height */
+  background: #7a7a7a; /* Grey background */
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  outline: none; /* Remove outline */
+  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 20px;
+
+  &::-webkit-slider-thumb {
+    opacity: 0;
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 20px;
+    width: 2px;
+    height: 5px; /* Slider handle height */
+    background: #7a7a7a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  &::-moz-range-thumb {
+    opacity: 0;
+
+    border-radius: 20px;
+    width: 2px;
+    height: 5px; /* Slider handle height */
+    background: #7a7a7a; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(1.04, 1.4);
+    transition: transform 0.05s ease-in-out;
+  }
+}
+
+.song-duration {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+
+  &__text {
+    font-size: 12px;
+  }
+}
+
+.control {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 246px;
+  justify-content: space-evenly;
+
+  &__play {
+    border: 0;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 30px;
+
+    border-color: transparent transparent transparent #ffffff;
+    transition: 100ms all ease;
+    cursor: pointer;
+
+    // play state
+    border-style: solid;
+    border-width: 15px 0px 15px 24px;
+
+    &.paused {
+      border-style: double;
+      border-width: 0px 0 0px 22px;
+    }
+
+    &:hover {
+      border-color: transparent transparent transparent #d0d0d0;
+      transform: scale(1.2);
+      transition: transform 0.1s ease-in-out;
+    }
+  }
+
+  &__pnb {
+    &:hover {
+      cursor: pointer;
+      transform: scale(0.9);
+      transition: transform opacity 0.1s ease-in-out;
+    }
+  }
+}
+
+.slider {
+  margin: 30px 0;
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 5px; /* Specified height */
+  background: #7a7a7a; /* Grey background */
+  background-image: linear-gradient(#ffffff, #ffffff);
+  background-size: 0% 100%;
+  background-repeat: no-repeat;
+  outline: none; /* Remove outline */
+  opacity: 1; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: 0.2s; /* 0.2 seconds transition on hover */
+  transition: opacity 0.2s;
+  border-radius: 20px;
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none; /* Override default look */
+    appearance: none;
+    border-radius: 20px;
+    width: 15px;
+    height: 15px; /* Slider handle height */
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+
+  &::-moz-range-thumb {
+    border-radius: 20px;
+    width: 13px;
+    height: 13px; /* Slider handle height */
+    background: #ffffff; /* Green background */
+    cursor: pointer; /* Cursor on hover */
+  }
+}
+
+.prev_track {
+  &__info {
+    font-style: normal;
+    font-size: 10px;
+    overflow: hidden;
+
+    letter-spacing: 0.035em;
+  }
+
+  &__songname {
+    margin-top: 8px;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 12px;
+    overflow: hidden;
+  }
+}
+
+.playlist {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    font-weight: 700;
+    font-size: 14px;
+    overflow: hidden;
+  }
+
+  &__svg {
+    &:hover {
+      cursor: pointer;
+
+      transform: scale(1.2);
+      transition: transform 0.1s ease-in-out;
+    }
+
+    &-disabled {
+      opacity: 0.3;
+
+      &:hover {
+        cursor: pointer;
+
+        transform: scale(1.2);
+        transition: transform 0.1s ease-in-out;
+      }
+    }
+  }
+}

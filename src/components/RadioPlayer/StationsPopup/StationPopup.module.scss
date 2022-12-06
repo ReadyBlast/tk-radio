@@ -1,0 +1,79 @@
+.popup {
+  position: absolute;
+  left: 20px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 246px;
+  height: 110px;
+
+  padding: 20px;
+
+  background: linear-gradient(
+    180deg,
+    rgba(75, 75, 75, 0.6) 0%,
+    rgb(88, 88, 88, 0.6) 100%,
+    rgba(75, 75, 75, 0.6) 100%
+  );
+
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  backdrop-filter: blur(6px);
+  /* Note: backdrop-filter has minimal browser support */
+
+  border-radius: 20px;
+}
+
+.popupHeader {
+  font-weight: 700;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
+
+.stationsList {
+  width: 100%;
+  max-height: 80px;
+  overflow-y: auto;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 5px; /* ширина всей полосы прокрутки */
+  }
+
+  &::-webkit-scrollbar-track {
+    width: 1px;
+    background: #868686; /* цвет зоны отслеживания */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    width: 3px;
+    border-radius: 20px; /* округлось бегунка */
+    border: 3px solid rgb(255, 255, 255); /* отступ вокруг бегунка */
+  }
+}
+
+.stationName {
+  font-weight: 500;
+  font-size: 14px;
+  margin: 5px 0;
+
+  &:hover {
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: #bababa;
+    border-radius: 20px;
+    transition: padding 0.3s, background-color 0.3s, border-radius 0.3s;
+    -webkit-transition: padding 0.3s, background-color 0.3s, border-radius 0.3s;
+  }
+}
+
+.icon {
+  margin-top: 10px;
+
+  &:hover {
+    cursor: pointer;
+
+    transform: scale(1.2);
+    transition: transform 0.1s ease-in-out;
+  }
+}
