@@ -48,7 +48,6 @@ const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
     useAppSelector((state) => state.radio);
   const { volumeValue } = useAppSelector((state) => state.general);
 
-  // const audio = useMemo(() => new Audio(src), [src]);
   const [isRadioPlayed, setIsRadioPlayed] = useState(false);
 
   const getStationInfo = useCallback(() => {

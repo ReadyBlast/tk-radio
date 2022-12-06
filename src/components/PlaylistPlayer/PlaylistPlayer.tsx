@@ -44,6 +44,7 @@ const PlaylistPlayer: React.FC<TPlayerProps> = ({ audio }) => {
     getSongs();
   }, [getSongs]);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
     audio.volume = Number(volumeValue) / 100;
 
