@@ -40,29 +40,28 @@ body {
   border-radius: 20px;
 }
 
-
 .radio {
-    padding: 7px 36px;
-    border: none;
-    border-radius: 20px 0 0 20px;
-    background: #333333;
+  padding: 7px 36px;
+  border: 1px solid black;
+  border-radius: 20px 0 0 20px;
+  background: #333333;
 
-    &:hover {
-      cursor: pointer;
-    }
+  &:hover {
+    cursor: pointer;
   }
+}
 
 .player {
-    padding: 7px 36px;
-    border: none;
-    border-radius: 0 20px 20px 0;
-    background: #333333;
+  padding: 7px 36px;
+  border: 1px solid black;
 
-    &:hover {
-      cursor: pointer;
-    }
+  border-radius: 0 20px 20px 0;
+  background: #333333;
+
+  &:hover {
+    cursor: pointer;
   }
-
+}
 
 .wrapper {
   position: relative;
