@@ -49,6 +49,8 @@ const Duration: React.FC<TProps> = ({ setAudCurrentTime, inputBgChanger }) => {
         }}
         onMouseDown={() => dispatch(setDurationToggle(false))}
         onMouseUp={() => setAudCurrentTime()}
+        onTouchEnd={() => setAudCurrentTime()}
+        onTouchStart={() => dispatch(setDurationToggle(false))}
         value={currentTime}
         type="range"
         min="0"
