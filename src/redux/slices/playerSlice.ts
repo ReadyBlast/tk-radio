@@ -43,7 +43,7 @@ const initialState: IPlayer = {
     title: 'Песня не выбрана',
     author: 'Не исполяется',
     url: '#',
-    albumArt: 'https://radio.tkofficial.ru/image/logo.jpg',
+    albumArt: 'https://radio.tkofficial.ru/player/image/default.jpg',
   },
   currentSongIndex: null,
   currentTime: 0,
