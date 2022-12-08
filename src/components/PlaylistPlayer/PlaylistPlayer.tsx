@@ -134,7 +134,7 @@ const PlaylistPlayer: React.FC<TPlayerProps> = ({ audio }) => {
         <img
           className="album_cover_player"
           style={popupValue ? { opacity: '0.1' } : {}}
-          src="https://radio.tkofficial.ru/image/logo.jpg"
+          src={currentSong.albumArt}
           alt="album_cover"
         />
         <div className="now_played_player">

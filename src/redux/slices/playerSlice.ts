@@ -11,6 +11,7 @@ export type TSong = {
   title: string;
   author: string;
   url: string;
+  albumArt: string;
 };
 
 interface IPlayer {
@@ -38,7 +39,12 @@ export const fetchSongs = createAsyncThunk('player/fetchSongs', async () => {
 const initialState: IPlayer = {
   defaultSongs: [],
   songs: [],
-  currentSong: { title: 'Песня не выбрана', author: 'Не исполяется', url: '#' },
+  currentSong: {
+    title: 'Песня не выбрана',
+    author: 'Не исполяется',
+    url: '#',
+    albumArt: 'https://radio.tkofficial.ru/image/logo.jpg',
+  },
   currentSongIndex: null,
   currentTime: 0,
   songDuration: 0,
