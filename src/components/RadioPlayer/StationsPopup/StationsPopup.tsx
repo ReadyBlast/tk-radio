@@ -24,7 +24,7 @@ const StationsPopup: React.FC<IStationsPopuoProps> = ({
   return (
     <div>
       <div className="station" style={popupValue ? { opacity: '0' } : {}}>
-        <button
+        <button aria-label="Station Popup"
           className="station__svg"
           onClick={() => dispatch(setPopupVisible(true))}
         >

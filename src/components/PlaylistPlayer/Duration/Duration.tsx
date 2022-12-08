@@ -44,9 +44,16 @@ const Duration: React.FC<TProps> = ({ setAudCurrentTime, inputBgChanger }) => {
   return (
     <>
       <input
-        style={{
-          backgroundSize: `${inputBgChanger(currentTime, songDuration)}`,
-        }}
+        style={
+          popupValue
+            ? {
+                backgroundSize: `${inputBgChanger(currentTime, songDuration)}`,
+                opacity: '0.1',
+              }
+            : {
+                backgroundSize: `${inputBgChanger(currentTime, songDuration)}`,
+              }
+        }
         onMouseDown={() => dispatch(setDurationToggle(false))}
         onMouseUp={() => setAudCurrentTime()}
         onTouchEnd={() => setAudCurrentTime()}
@@ -59,6 +66,7 @@ const Duration: React.FC<TProps> = ({ setAudCurrentTime, inputBgChanger }) => {
         onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
           dispatch(setCurrentTime(Number(event.target.value)))
         }
+        aria-label="Duration Slider"
       />
       <div
         className="song-duration"

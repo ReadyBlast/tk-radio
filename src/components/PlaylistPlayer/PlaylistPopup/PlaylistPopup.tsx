@@ -84,6 +84,8 @@ const PlaylistPopup: React.FC<IPlaylistPopupProps> = ({ onClickHandler }) => {
         <button
           className="playlist__svg"
           onClick={() => dispatch(setPopupVisible(true))}
+          style={popupValue ? { opacity: '0' } : {}}
+          aria-label="Playlist Button"
         >
           <svg
             width="28"
@@ -124,6 +126,7 @@ const PlaylistPopup: React.FC<IPlaylistPopupProps> = ({ onClickHandler }) => {
           }
           onClick={() => repeatStatusChanger()}
           style={popupValue ? { opacity: '0.1' } : {}}
+          aria-label="Repeat Button"
         >
           {repeatStatus !== 'one' && (
             <svg
@@ -158,6 +161,7 @@ const PlaylistPopup: React.FC<IPlaylistPopupProps> = ({ onClickHandler }) => {
           className="playlist__svg"
           style={popupValue ? { opacity: '0.1' } : {}}
           onClick={() => shuffler()}
+          aria-label="Shuffle Button"
         >
           <svg
             width="24"

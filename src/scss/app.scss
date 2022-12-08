@@ -14,14 +14,36 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-position: center center;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: cover;
-  background-color: #464646;
-  height: 100vh;
-  backdrop-filter: blur(70px);
-  -webkit-backdrop-filter: blur(70px);
+
+  height: 100vh; // Тут высота блока
+  width: 100%; // Тут длина
+  background: linear-gradient(
+    149deg,
+    rgba(24, 187, 156, 1) 0%,
+    rgba(106, 57, 175, 1) 42%,
+    rgba(187, 24, 148, 1) 72%,
+    rgba(115, 53, 134, 1) 100%
+  );
+  animation: gradient 15s infinite linear; // 10s - скорость анимации
+  background-size: 400%; // Можно менять и подбирать интенсивность
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 80% 0%;
+  }
+  50% {
+    background-position: 20% 100%;
+  }
+  100% {
+    background-position: 80% 0%;
+  }
+  50% {
+    background-position: 20% 100%;
+  }
+  0% {
+    background-position: 80% 0%;
+  }
 }
 
 .player-switcher {
@@ -29,22 +51,12 @@ body {
   justify-content: center;
   max-width: 246px;
   margin: 0 auto 40px;
-  background: linear-gradient(
-    180deg,
-    rgba(75, 75, 75, 0.6) 0%,
-    rgba(170, 170, 170, 0.6) 100%,
-    rgba(75, 75, 75, 0.6) 100%
-  );
-  box-shadow: 0px 4px 30px rgb(0 0 0 / 25%);
-  backdrop-filter: blur(6px);
-  border-radius: 20px;
 }
 
 .radio {
   padding: 7px 36px;
-  border: 1px solid black;
   border-radius: 20px 0 0 20px;
-  background: #333333;
+  background: rgba(75, 75, 75, 0.6) 0%;
 
   &:hover {
     cursor: pointer;
@@ -53,10 +65,10 @@ body {
 
 .player {
   padding: 7px 36px;
-  border: 1px solid black;
+  margin-left: 1px;
 
   border-radius: 0 20px 20px 0;
-  background: #333333;
+  background: rgba(75, 75, 75, 0.6) 0%;
 
   &:hover {
     cursor: pointer;
@@ -79,7 +91,6 @@ body {
   );
   box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(6px);
-  /* Note: backdrop-filter has minimal browser support */
 
   border-radius: 20px;
 }
@@ -119,5 +130,5 @@ body {
 }
 
 .disabled {
-  color: #5c5c5c;
+  color: #858585;
 }

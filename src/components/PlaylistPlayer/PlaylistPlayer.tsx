@@ -178,6 +178,7 @@ const PlaylistPlayer: React.FC<TPlayerProps> = ({ audio }) => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             onChangeVolume(event.target.value)
           }
+          aria-label="Volume Slider"
         />
         <PlaylistPopup onClickHandler={onClickHandler} />
       </div>

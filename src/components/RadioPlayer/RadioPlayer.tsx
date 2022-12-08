@@ -70,7 +70,7 @@ const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
   }, [getStationInfo]);
 
   useEffect(() => {
-    const timer = setInterval(() => getStationInfo(), 500);
+    const timer = setInterval(() => getStationInfo(), 1000);
     return () => {
       clearInterval(timer);
     };
@@ -108,9 +108,18 @@ const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
   return (
     <div className="wrapper">
       <div className="container">
-        <img className="album_cover" src={albumCover} alt="album_cover" />
-        <div className="now_played">
+        <img
+          className="album_cover"
+          src={albumCover}
+          alt="album_cover"
+          style={popupValue ? { opacity: '0.1' } : {}}
+        />
+        <div
+          className="now_played"
+          style={popupValue ? { opacity: '0.1' } : {}}
+        >
           <button
+            aria-label="Play/Pause"
             onClick={playingRadioHandler}
             className={
               isRadioPlayed === false
@@ -150,6 +159,7 @@ const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
           onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
             onChangeVolume(event.target.value)
           }
+          aria-label="Volume Slider"
         />
         <div className="prev_track" style={popupValue ? { opacity: '0' } : {}}>
           <p className="prev_track__info">Предыдущий трек</p>

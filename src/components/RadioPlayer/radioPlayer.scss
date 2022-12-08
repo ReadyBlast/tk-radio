@@ -11,6 +11,7 @@
   margin-top: 30px;
   align-items: center;
   width: 246px;
+  z-index: -1;
 
   &__button {
     margin-right: 18px;
@@ -62,7 +63,7 @@
   appearance: none;
   width: 100%; /* Full-width */
   height: 5px; /* Specified height */
-  background: #7a7a7a; /* Grey background */
+  background: rgba(75, 75, 75, 0.4) 0%; /* Grey background */
   background-image: linear-gradient(#ffffff, #ffffff);
   background-size: 0% 100%;
   background-repeat: no-repeat;

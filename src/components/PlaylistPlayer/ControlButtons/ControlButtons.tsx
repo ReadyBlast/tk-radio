@@ -70,6 +70,7 @@ const ControlButtons: React.FC<TControlButtonsProps> = ({
         className={
           isPlayed === false ? 'control__play' : 'control__play paused'
         }
+        aria-label="Play-Pause Button"
       ></button>
       <svg
         className="control__pnb"

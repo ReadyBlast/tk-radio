@@ -29,10 +29,10 @@ function App() {
   return (
     <div
       className="bg_img"
-      style={{
-        background:
-          'linear-gradient(359.73deg, #2B2B2B -28.45%, #000000 114.94%)',
-      }}
+      // style={{
+      //   background:
+      //     'linear-gradient(359.73deg, #2B2B2B -28.45%, #000000 114.94%)',
+      // }}
     >
       <div className="content">
         <div className="player-switcher">
@@ -59,6 +59,7 @@ function App() {
             className="steam-link"
             target="_blank"
             rel="noreferrer"
+            aria-label="Steam Link"
           >
             <svg
               width="42"
@@ -85,6 +86,7 @@ function App() {
             className="vk-link"
             target="_blank"
             rel="noreferrer"
+            aria-label="VK Link"
           >
             <svg
               width="42"
@@ -111,6 +113,7 @@ function App() {
             className="discord-link"
             target="_blank"
             rel="noreferrer"
+            aria-label="Discord Link"
           >
             <svg
               width="42"

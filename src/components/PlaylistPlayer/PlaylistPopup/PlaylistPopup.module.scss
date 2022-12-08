@@ -10,16 +10,20 @@
 
   padding: 20px;
 
-  background: linear-gradient(
-    180deg,
-    rgba(75, 75, 75, 0.6) 0%,
-    rgb(88, 88, 88, 0.6) 100%,
-    rgba(75, 75, 75, 0.6) 100%
-  );
-
-  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(6px);
-  /* Note: backdrop-filter has minimal browser support */
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(156, 156, 156, 0.5) 0%,
+  //   rgba(170, 170, 170, 0.5) 100%,
+  //   rgba(156, 156, 156, 0.5) 100%
+  // );
+  // background: linear-gradient(
+  //   180deg,
+  //   rgba(75, 75, 75, 0.6) 0%,
+  //   rgb(88, 88, 88, 0.6) 100%,
+  //   rgba(75, 75, 75, 0.6) 100%
+  // );
+  // box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.25);
+  // backdrop-filter: blur(6px);
 
   border-radius: 20px;
 }
