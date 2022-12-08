@@ -119,6 +119,7 @@ const RadioPlayer: React.FC<TRadioProps> = ({audio}) => {
           style={popupValue ? { opacity: '0.1' } : {}}
         >
           <button
+            disabled={popupValue}
             aria-label="Play/Pause"
             onClick={playingRadioHandler}
             className={
